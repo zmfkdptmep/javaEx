@@ -1,0 +1,2 @@
+module Chamzo2 {
+}
