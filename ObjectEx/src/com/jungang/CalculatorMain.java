@@ -32,6 +32,8 @@ public class CalculatorMain {
 			String how2= sc.next();
 			if(how2.equals("q")) {
 				run = false;
+			}else {
+				continue;
 			}
 
 			
