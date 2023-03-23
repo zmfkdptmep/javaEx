@@ -23,21 +23,22 @@ public class Application {
 		Employee[] eArr = new Employee[10];
 		int count = 0;
 		
-		while(true) {
-			e1 = new Employee(); // 생성자로 해보자
+		while(true) { // 생성자로 해보자
 			sc = new Scanner(System.in);
 			System.out.println("이름을 입력하세요");
-			e1.setName(sc.next());
+			String name= (sc.next());
 			System.out.println("나이를 입력하세요");
-			e1.setAge(sc.nextInt());
+			int age = (sc.nextInt());
 			System.out.println("키를 입력하세요");
-			e1.setHeight(sc.nextDouble());
+			double height = (sc.nextDouble());
 			System.out.println("몸무게를 입력하세요");
-			e1.setWeight(sc.nextDouble());
+			double weight = (sc.nextDouble());
 			System.out.println("급여를 입력하세요");
-			e1.setSalary(sc.nextInt());
+			int salary = (sc.nextInt());
+			sc.nextLine();
 			System.out.println("부서를 입력하세요");
-			e1.setDept(sc.next());
+			String dept = (sc.nextLine());
+			e1 = new Employee(name,age,height,weight,salary,dept);
 			eArr[count] = e1;
 			count++;
 			System.out.println(count+"번째 사원을 입력하였습니다.\n");
