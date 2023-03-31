@@ -35,7 +35,7 @@ public class Library {
 	// 3. Ã¥ ÀúÀå
 	
 	public void updateBook(int index) {
-		if(index>bookList.size()) {
+		if(index<bookList.size()) {
 			Book book = bookList.get(index);
 			book.setIsRent(true);
 			bookList.set(index,book);

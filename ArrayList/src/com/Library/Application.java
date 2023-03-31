@@ -16,7 +16,7 @@ public class Application {
 		int i = 0;
 		
 		// 책 삭제
-		l1.removeBook(i);
+		//l1.removeBook(i);
 		
 		// 책 정보 출력
 		l1.toString();
@@ -25,7 +25,10 @@ public class Application {
 		// 책 대여 : book.isRent = true;
 		System.out.println("대여할 책 번호를 선택하세요.");
 		i = 0;
+		l1.updateBook(i);
 		// 검증 : 책 목록의 사이즈보다 큰 값이 입력되었을때 다시 입력 받을 수 있도록
+		
+		l1.toString();
 	}
 
 }

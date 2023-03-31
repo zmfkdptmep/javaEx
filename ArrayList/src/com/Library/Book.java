@@ -13,7 +13,11 @@ public class Book {
 	
 	@Override
 	public String toString() {
-		return getTitle()+" / "+getAuthor();
+		String str = "";
+		if(isRent) {
+			str = "´ë¿© Áß";
+		}
+		return getTitle()+" / "+getAuthor()+" / "+str;
 	}
 	
 	public String getTitle() {
