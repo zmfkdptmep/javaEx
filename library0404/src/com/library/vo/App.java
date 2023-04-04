@@ -9,9 +9,8 @@ public class App {
 		
 		Library lib = new Library();
 		
+		lib.insert(0, null, null, false);
 		
-	
-		lib.insert(3, "책3", "작가3", false);
 		System.out.println(lib.toString());
 	}
 
