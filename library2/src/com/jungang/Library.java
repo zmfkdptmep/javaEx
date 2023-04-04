@@ -1,17 +1,23 @@
 package com.jungang;
 
 import java.util.List;
+
+import com.jungang.dao.Dao;
+import com.jungang.dao.FileDao;
+
 import java.util.ArrayList;
 
 public class Library {
 	// List 인터페이스의 규제를 받으면서 동시에 ArrayList의 메소드를 쓰기 위해
 	private List<Book> bookList = new ArrayList<Book>();
+	private Dao dao = new FileDao();
 	
 	Library(){
 		bookList.add(new Book("책1","작가1"));
 		bookList.add(new Book("책2","작가2"));
 		bookList.add(new Book("책3","작가3"));
 		numbering();
+		this.bookList = dao.getBookList();
 	}
 	public Library(String title, String author) {
 		bookList.add(new Book(title,author));
@@ -22,6 +28,7 @@ public class Library {
 	public void insertBook(String title, String author) {
 		Book book = new Book(title, author);
 		bookList.add(book);
+		dao.insertBook(bookList);
 		numbering();
 	}
 	public boolean rentBook(int no) {
