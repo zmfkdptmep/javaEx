@@ -17,7 +17,6 @@ public class Library {
 		bookList.add(new Book("책2","작가2"));
 		bookList.add(new Book("책3","작가3"));
 		numbering();
-		this.bookList = dao.getBookList();
 	}
 	public Library(String title, String author) {
 		bookList.add(new Book(title,author));
