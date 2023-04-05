@@ -12,9 +12,9 @@ public class ListComparator implements Comparator<Book> {
 		
 		
 		if(no1>no2) {
-			return -1;
-		}else if(no1<no2) {
 			return 1;
+		}else if(no1<no2) {
+			return -1;
 		}else {
 			return 0;
 		}
