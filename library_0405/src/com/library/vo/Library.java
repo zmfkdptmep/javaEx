@@ -5,6 +5,7 @@ import java.util.Collections;
 import java.util.List;
 
 import com.library.dao.Dao;
+import com.library.dao.DatabaseDao;
 import com.library.dao.FileDao;
 
 public class Library{
@@ -17,7 +18,12 @@ public class Library{
 	// 생성자 : 클래스명과 같은 이름, 반환 타입이 없다.
 	Library() {
 		bookList = dao.getList();
-
+	}
+	Library(String daoType){
+		if(daoType.equals("DB")) {
+			dao = new DatabaseDao();
+		}
+		bookList = dao.getList();
 	}
 
 	// 책의 정보를 받아서 리스트에 등록
@@ -90,7 +96,17 @@ public class Library{
 			}
 			if (book.getNo() == no && !book.isRent()) {
 				book.setRent(true);
+				// 파일로 출력
 				dao.listToFile(bookList);
+				// 데이터 베이스 업데이트
+				int a = dao.update(no,"N");
+				if(a>0) {
+					System.out.println(a+"건 처리되었습니다.(데이터 베이스)");
+				}else {
+					System.out.println("처리도중 오류가 발생했습니다.(데이터 베이스)");
+					book.setRent(false);
+				}
+				
 				System.out.println("대여 완료");
 				return true;
 			}
@@ -107,6 +123,9 @@ public class Library{
 				if (book.getNo() == no && book.isRent()) {
 					book.setRent(false);
 					dao.listToFile(bookList);
+					// 업데이트 로직 호출
+					dao.update(no,"Y");
+					
 					System.out.println("반납 완료");
 					return true;
 				}
@@ -122,7 +141,7 @@ public class Library{
 	public String toString() {
 		System.out.println("책 목록=========================== lib.toString()");
 		String info = "";
-		Collections.sort(bookList, new ListComparator());
+		//Collections.sort(bookList, new ListComparator());
 		for (Book book : bookList) {
 			info += book.toString();
 		}

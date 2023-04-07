@@ -112,4 +112,34 @@ public class FileDao implements Dao{
 		return false;
 	}
 
+
+
+
+
+	@Override
+	public int delete(int no) {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
+
+
+
+
+	@Override
+	public int update(int no, String isRent) {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
+
+
+
+
+	@Override
+	public int insert(Book book) {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
 }

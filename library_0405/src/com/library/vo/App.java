@@ -6,7 +6,7 @@ public class App {
 	Scanner sc = new Scanner(System.in);
 
 	public static void main(String[] args) {
-		Library lib = new Library();
+		Library lib = new Library("DB");
 		App app = new App();
 		String str = "";
 		int menu = 0;

@@ -37,7 +37,7 @@ public class Member {
 	
 	@Override
 	public String toString() {
-		return getName()+" "+getAge()+" "+isRent+"\n";
+		return getName()+" "+getAge()+" "+isRent;
 	}
 	
 	
