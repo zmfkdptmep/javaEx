@@ -33,6 +33,7 @@ public class DatabaseDao implements Dao {
 			
 			Book book = new Book(no,title,author,isRent);
 			list.add(book);
+			conn.commit();
 		}
 		
 		}catch(SQLException e) {
@@ -55,6 +56,7 @@ public class DatabaseDao implements Dao {
 		Statement stmt = conn.createStatement();
 		String sql = "delete book where no = "+no;
 		res = stmt.executeUpdate(sql);
+		conn.commit();
 		System.out.println("삭제 완료");
 		
 		DBUtil.closeConnection(conn, stmt);
@@ -75,6 +77,7 @@ public class DatabaseDao implements Dao {
 		Statement stmt = conn.createStatement();
 		String sql = "update book set isRent = '"+isRent+"' where no ="+no;
 		res = stmt.executeUpdate(sql);
+		conn.commit();
 		System.out.println("업데이트 완료");
 		
 		DBUtil.closeConnection(conn, stmt);
@@ -91,8 +94,10 @@ public class DatabaseDao implements Dao {
 		try {
 			Connection conn = DBUtil.getConnection();
 			Statement stmt = conn.createStatement();
-			String sql = "insert into book values("+book.getNo()+",'"+book.getTitle()+"','"+book.getAuthor()+"','"+book.isRent()+"',sysdate,null)";
+			String str = (book.isRent())?"Y":"N";
+			String sql = "insert into book values("+book.getNo()+",'"+book.getTitle()+"','"+book.getAuthor()+"','"+str+"',sysdate,null)";
 			res = stmt.executeUpdate(sql);
+			conn.commit();
 			System.out.println("삽입 완료");
 			
 			DBUtil.closeConnection(conn, stmt);

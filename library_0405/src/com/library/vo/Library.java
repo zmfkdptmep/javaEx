@@ -43,18 +43,17 @@ public class Library{
 
 		// 2. 리스트에 등록
 		bookList.add(book);
+		dao.insert(book);
 
 		// 3. 리스트를 파일로 출력
 		boolean res = dao.listToFile(bookList);
 
 		// 4. 파일에 정상적으로 등록이 되지 않은 경우
 		// 리스트에서 제거
-		if (!res) {
-			bookList.remove(book);
-			System.out.println("책이 등록되지 않았습니다.\n관리자에게 문의해주세요.");
-			return false;
-		}
-		System.out.println("책이 등록되었습니다.");
+		/*
+		 * if (!res) { bookList.remove(book);
+		 * System.out.println("책이 등록되지 않았습니다.\n관리자에게 문의해주세요."); return false; }
+		 */System.out.println("책이 등록되었습니다.");
 		return true;
 
 	}
@@ -73,6 +72,7 @@ public class Library{
 			if (book.getNo() == no) {
 				System.out.println("삭제되었습니다.");
 				bookList.remove(book);
+				dao.delete(no);
 				res = dao.listToFile(bookList);
 			}
 		}
@@ -99,7 +99,7 @@ public class Library{
 				// 파일로 출력
 				dao.listToFile(bookList);
 				// 데이터 베이스 업데이트
-				int a = dao.update(no,"N");
+				int a = dao.update(no,"Y");
 				if(a>0) {
 					System.out.println(a+"건 처리되었습니다.(데이터 베이스)");
 				}else {
@@ -124,7 +124,7 @@ public class Library{
 					book.setRent(false);
 					dao.listToFile(bookList);
 					// 업데이트 로직 호출
-					dao.update(no,"Y");
+					dao.update(no,"N");
 					
 					System.out.println("반납 완료");
 					return true;
@@ -141,7 +141,7 @@ public class Library{
 	public String toString() {
 		System.out.println("책 목록=========================== lib.toString()");
 		String info = "";
-		//Collections.sort(bookList, new ListComparator());
+		Collections.sort(bookList, new ListComparator());
 		for (Book book : bookList) {
 			info += book.toString();
 		}
